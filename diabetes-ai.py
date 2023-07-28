@@ -8,6 +8,7 @@ from keras.optimizers import Adam
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 
 # Step 1: Load the dataset
+# Assuming you have downloaded the Pima Indians Diabetes Database and it's saved as 'diabetes.csv'.
 data = pd.read_csv('diabetes.csv')
 
 # Step 2: Prepare the data
@@ -56,3 +57,6 @@ percentage_risk = y_prob * 100
 risk_df = pd.DataFrame({'Actual': y_test, 'Predicted': y_pred, 'Probability of Diabetes (%)': percentage_risk.flatten()})
 print("\nPatient Diabetes Probability:")
 print(risk_df)
+
+# Save risk_df to a CSV file
+risk_df.to_csv('diabetes_risk_predictions.csv', index=False)
